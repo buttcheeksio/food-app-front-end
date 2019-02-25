@@ -4,9 +4,52 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import thunk from 'redux-thunk'
+import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+import { Provider } from 'react-redux'
+import userReducer from './reducers/userReducer'
+import ingredientsReducer from './reducers/ingredientsReducer'
+import recipesReducer from './reducers/recipesReducer'
+
+
+const allStoreEnhancers = compose(
+  applyMiddleware(thunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+const allReducers = combineReducers({
+  user: userReducer,
+  ingredients: ingredientsReducer,
+  recipes: recipesReducer
+})
+
+const store = createStore(
+  allReducers,
+  {
+    user: 'John'
+  },
+  allStoreEnhancers
+)
+
+// console.log(store.getState())
+
+// const updateUserAction = {
+//   type: 'updateUser',
+//   payload: {
+//     user: 'Nina'
+//   }
+// }
+//
+// store.dispatch(updateUserAction)
+
+// const action = {
+//   type: 'changeState',
+//   payload: {
+//     newState: 'New state'
+//   }
+// }
+
+// store.dispatch(action)
+
+ReactDOM.render(<Provider store={store}><App aRandomProps="whatever" /></Provider>, document.getElementById('root'));
 serviceWorker.unregister();
