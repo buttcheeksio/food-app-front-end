@@ -3,7 +3,10 @@ export const GET_USER_INGREDIENTS = 'GET_USER_INGREDIENTS'
 export const SAVE_INGREDIENT = 'SAVE_INGREDIENT'
 export const ING_USER_HAS = 'ING_USER_HAS'
 export const ING_USER_DOESNT_HAVE = 'ING_USER_DOESNT_HAVE'
-export const TEST = 'TEST'
+export const CHANGE_CLICKED = "CHANGE_CLICKED"
+export const SAVE_USER_INGREDIENTS = "SAVE_USER_INGREDIENTS"
+export const CLEAR_INGREDIENTS = "CLEAR_INGREDIENTS"
+export const USERS_INGREDIENTS = "USERS_INGREDIENTS"
 
 
 export function ingredientAPIRequest(url, type) {
@@ -11,41 +14,41 @@ export function ingredientAPIRequest(url, type) {
     fetch(url)
       .then( res => res.json() )
       .then( data => {
-        dispatch(getIngredients(type, data))
+        const newData = data.map( ingredient => {
+          return {...ingredient, clicked: false}
+        })
+        dispatch(getIngredients(type, newData))
       })
       // .then(() => console.log(this.user))
   }
 } // end of ingredientAPIRequest()
 
-export function determineIngUserHas(allIngredients) {
-  // return dispatch => {
-  //   // if (!this.state.user.ingUserHas.length > 0) {
-  //   //   console.log(this.state)
-  //   // }
-  // }
-  console.log(allIngredients)
-}
+export function changeClicked(ingId) {
+  return {
+    type: CHANGE_CLICKED,
+    payload: ingId
+  }
+} // end of changeClicked(ingId)
 
-function getIngredients(type, data) {
+export function saveUserIngredients(data) {
+  return {
+    type: SAVE_USER_INGREDIENTS,
+    payload: data
+  }
+} // end of saveUserIngredients()
+
+export function clearIngredients() {
+  return {
+    type: CLEAR_INGREDIENTS
+  }
+} // end of clearIngredients()
+
+export function getIngredients(type, data) {
   return {
     type: type,
     payload: data
   }
 } // end of getIngredients(data)
-
-// function ingUserHas(data) {
-//   return {
-//     type: ING_USER_HAS,
-//     payload: data
-//   }
-// } // end of haveIngredients()
-
-// function ingUserDoesntHave(data) {
-//   return {
-//     type: ING_USER_DOESNT_HAVE,
-//     payload: data
-//   }
-// } // end of dontHaveIngredients()
 
 export function saveIngredient(ingredient) {
   // console.log("in saveIngredient: ", ingredient)
@@ -55,9 +58,9 @@ export function saveIngredient(ingredient) {
   })
 } // end of saveIngredient(ingredient)
 
-export function aTest() {
+export function usersIngredients(ingredients) {
   return {
-    type: TEST,
-    payload: "a huge butt"
+    type: USERS_INGREDIENTS,
+    payload: ingredients
   }
 }

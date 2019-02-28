@@ -27,21 +27,29 @@ export function userIngAPIRequest(url) {
   return dispatch => {
     fetch(url)
     .then( res => res.json() )
-    // .then( data => {
-    //   dispatch(getUsersIngredients(data.filter( ))
-    // } )
-    // .then(() => console.log(this.user))
+    .then( data => {
+      dispatch(getUsersIngredients(removeDuplicates(data, 'id')))
+    })
+    // .then(console.log(this))
   }
 } // end of userIngAPIRequest()
 
+function removeDuplicates(arr, comp) {
+  const unique = arr
+    .map(e => e[comp])
+     // store the keys of the unique objects
+    .map((e, i, final) => final.indexOf(e) === i && i)
+    // eliminate the dead keys & store unique objects
+    .filter(e => arr[e]).map(e => arr[e])
+   return unique
+} // removeDuplicates()
 
-
-// function getUsersIngredients(data) {
-//   return {
-//     type: GET_USERS_INGREDIENTS,
-//     payload: data
-//   }
-// } // end of getIngredients(data)
+function getUsersIngredients(data) {
+  return {
+    type: GET_USERS_INGREDIENTS,
+    payload: data
+  }
+} // end of getIngredients(data)
 
 
 export function apiRequest() {

@@ -6,14 +6,19 @@ import { connect } from 'react-redux'
 
 class IngredientsContainer extends Component {
 
+  // componentDidMount() {
+  //   this.setState({all: this.props.ingredients})
+  // }
+
   renderIngredients = () => {
-    if (this.props.ingredients.all) {
-      return this.props.ingredients.all.map( ingredient => {
-        return (
-          <IngredientCard key={ingredient.id} data={ingredient} />
-        )
-      })
-    }
+    const ingUserHasIDs = this.props.user.ingUserHas.map( ing => ing.id )
+
+    return this.props.ingredients.all.map( ing => {
+        if (!ingUserHasIDs.includes(ing.id) && ing.clicked === false) {
+          return <IngredientCard key={ing.id} data={ing} />
+        }
+      }
+    )
   } // end of renderIngredients()
 
   render() {

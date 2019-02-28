@@ -1,7 +1,23 @@
-import { GET_INGREDIENTS, SAVE_INGREDIENT, GET_USER_INGREDIENTS, TEST } from '../actions/ingredientsActions'
+import {  CHANGE_CLICKED,
+          GET_INGREDIENTS,
+          SAVE_INGREDIENT,
+          GET_USER_INGREDIENTS,
+          CLEAR_INGREDIENTS
+        } from '../actions/ingredientsActions'
 
 export default function ingredientsReducer(state = { all: [], saved: [], userIngredients: [] }, { type, payload }) {
   switch (type) {
+    case CHANGE_CLICKED:
+    return {
+      ...state,
+      all: state.all.map(ingredient => {
+        if (ingredient.id === payload) {
+          return {...ingredient, clicked: !ingredient.clicked}
+        } else {
+          return ingredient
+        }
+      })
+    }
     case GET_INGREDIENTS:
       return {
         ...state,
@@ -17,11 +33,22 @@ export default function ingredientsReducer(state = { all: [], saved: [], userIng
         ...state,
         userIngredients: [...state.userIngredients, payload]
       }
-    case TEST:
+    case CLEAR_INGREDIENTS:
       return {
         ...state,
-        hasButt: payload
+        all: state.all.map(ingredient => {
+          if (ingredient.clicked) {
+            return {...ingredient, clicked: false}
+          } else {
+            return ingredient
+          }
+        })
       }
+    // case USERS_INGREDIENTS:
+    //   return {
+    //     ...state,
+    //
+    //   }
 
     default:
       return state

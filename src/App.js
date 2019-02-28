@@ -25,6 +25,10 @@ class App extends Component {
   // constructor(props) {
   //   super(props)
   //
+  //   this.state = {
+  //     all: []
+  //   }
+  //
   //   // this.onUpdateUser = this.onUpdateUser.bind(this)
   // } // end of constructor
 
@@ -32,14 +36,16 @@ class App extends Component {
     this.props.ingredientAPIRequest(ingURL, 'GET_INGREDIENTS')
     this.props.userIngAPIRequest(userIngURL)
     this.props.recipeAPIRequest()
+    // this.setState({all: this.props.ingredients.all})
   } // end of componentDidMount()
 
-  // componentDidUpdate(prevProps) {
-  //   if ( prevState.)
-  //   this.props.userIngredientAPIRequest(userIngURL)
-  // }
+  componentDidUpdate() {
+    this.props.userIngAPIRequest(userIngURL)
+  }
 
   render() {
+    // this.setState({all: this})
+    // console.log(this)
     return (
 
           <div className="App">
