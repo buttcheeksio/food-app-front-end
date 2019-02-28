@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Card } from 'react-materialize'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { saveIngredient, changeClicked } from '../actions/ingredientsActions'
+import { saveIngredient } from '../actions/ingredientsActions'
 
 class IngredientCard extends Component {
 
@@ -12,7 +12,7 @@ class IngredientCard extends Component {
     return (
       <div>
         {
-          <Card className="teal lighten-4 black-text" onClick={() => this.props.changeClicked(this.props.data.id)}>
+          <Card className="teal lighten-4 black-text" onClick={() => this.props.changeClicked()}>
             <span>{this.props.data.name}</span>
           </Card>
         }
@@ -31,8 +31,8 @@ const mapStateToProps = (state) => {
 } // end of mapStateToProps
 
 const mapActionsToProps = {
-  saveIngredient: saveIngredient,
-  changeClicked: changeClicked
+  saveIngredient: saveIngredient
+
 } // end of mapActionsToProps
 
 

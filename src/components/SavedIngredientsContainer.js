@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import IngredientCard from './IngredientCard'
-import { clearIngredients } from '../actions/ingredientsActions'
+import { clearIngredients, changeClicked  } from '../actions/ingredientsActions'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Row } from 'react-materialize'
@@ -14,7 +14,7 @@ class SavedIngredientsContainer extends Component {
     // console.log("in SavedIngredientsContainer ", this.props.ingredients.saved)
       return this.props.ingredients.all.map( ingredient => {
         if (ingredient.clicked === true){
-        return  <IngredientCard key={ingredient.id} data={ingredient} />
+        return  <IngredientCard key={ingredient.id} data={ingredient} changeClicked={() => this.props.changeClicked(ingredient.id)} />
       }
     })
   } // end of renderSavedIngredients()
@@ -58,7 +58,8 @@ const mapStateToProps = (state) => {
 } // end of mapStateToProps
 
 const mapActionsToProps = {
-  clearIngredients: clearIngredients
+  clearIngredients: clearIngredients,
+  changeClicked: changeClicked
 } // end of mapActionsToProps
 
 export default connect(mapStateToProps, mapActionsToProps)(SavedIngredientsContainer);

@@ -10,7 +10,7 @@ class UserIngredientsContainer extends Component {
   renderIngredients = () => {
     if (this.props.user.ingUserHas) {
       return this.props.user.ingUserHas.map( ingredient => {
-        return <IngredientCard key={ingredient.id} data={ingredient} />
+        return <IngredientCard key={ingredient.id} data={ingredient} changeClicked={() => console.log('lol')}/>
       })
     }
   } // end of renderSavedIngredients()
