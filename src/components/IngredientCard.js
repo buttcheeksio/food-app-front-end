@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
+import { Card } from 'react-materialize'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { saveIngredient } from '../actions/ingredientsActions'
 
 class IngredientCard extends Component {
   render() {
-    console.log("in ingredientCard: ", this.props)
     return (
-      <div>{this.props.data.name}</div>
+      <div>
+        <Card className="teal lighten-4 black-text" onClick={() => this.props.saveIngredient(this.props.data)}>
+          <span>{this.props.data.name}</span>
+        </Card>
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  // return {
-  //
-  // }
-
   return state
 } // end of mapStateToProps
 
+const mapActionsToProps = {
+  saveIngredient: saveIngredient
+} // end of mapActionsToProps
 
-export default connect(mapStateToProps)(IngredientCard);
+
+export default connect(mapStateToProps, mapActionsToProps)(IngredientCard);

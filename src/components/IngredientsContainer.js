@@ -7,45 +7,27 @@ import { connect } from 'react-redux'
 class IngredientsContainer extends Component {
 
   renderIngredients = () => {
-
-    if (this.props.ingredients) {
-      return this.props.ingredients.map( ingredient => {
+    if (this.props.ingredients.all) {
+      return this.props.ingredients.all.map( ingredient => {
         return (
-          <IngredientCard data={ingredient}/>
+          <IngredientCard key={ingredient.id} data={ingredient} />
         )
-        // console.log(ingredient)
       })
     }
-
-      // console.log(this.props.ingredients)
-    // console.log("helo")
   } // end of renderIngredients()
 
   render() {
-    // console.log("in IngredientsContainer :", this.props.ingredients)
-
+    console.log("in ingredientsContainer: ", this.props)
     return (
-      <div>INGREDIENTS CONTAINER
+      <div>
       { this.renderIngredients() }
       </div>
     )
   } // end of render()
-}
 
-// const IngredientsContainer = (props) => {
-//   console.log(this.props)
-//   return (
-//     <div>INGREDIENTS CONTAINER
-//
-//     </div>
-//   )
-// }
+} // end of IngredientsContainer
 
 const mapStateToProps = (state) => {
-  // return {
-  //
-  // }
-
   return state
 } // end of mapStateToProps
 

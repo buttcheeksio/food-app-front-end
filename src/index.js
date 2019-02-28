@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { BrowserRouter as Router } from "react-router-dom"
+
 import thunk from 'redux-thunk'
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 
@@ -26,7 +28,12 @@ const allReducers = combineReducers({
 const store = createStore(
   allReducers,
   {
-    user: 'John'
+    user: {
+      name: 'John',
+      id: 1,
+      ingUserDoesntHave: [],
+      ingUserHas: []
+    }
   },
   allStoreEnhancers
 )
@@ -51,5 +58,11 @@ const store = createStore(
 
 // store.dispatch(action)
 
-ReactDOM.render(<Provider store={store}><App aRandomProps="whatever" /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <App aRandomProps="whatever" />
+    </Router>
+  </Provider>,
+  document.getElementById('root'));
 serviceWorker.unregister();
