@@ -10,10 +10,10 @@ import thunk from 'redux-thunk'
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
 
 import { Provider } from 'react-redux'
+import { reducer as formReducer } from 'redux-form'
 import userReducer from './reducers/userReducer'
 import ingredientsReducer from './reducers/ingredientsReducer'
 import recipesReducer from './reducers/recipesReducer'
-
 
 const allStoreEnhancers = compose(
   applyMiddleware(thunk),
@@ -22,7 +22,8 @@ const allStoreEnhancers = compose(
 const allReducers = combineReducers({
   user: userReducer,
   ingredients: ingredientsReducer,
-  recipes: recipesReducer
+  recipes: recipesReducer,
+  form: formReducer
 })
 
 const store = createStore(
@@ -37,26 +38,6 @@ const store = createStore(
   },
   allStoreEnhancers
 )
-
-// console.log(store.getState())
-
-// const updateUserAction = {
-//   type: 'updateUser',
-//   payload: {
-//     user: 'Nina'
-//   }
-// }
-//
-// store.dispatch(updateUserAction)
-
-// const action = {
-//   type: 'changeState',
-//   payload: {
-//     newState: 'New state'
-//   }
-// }
-
-// store.dispatch(action)
 
 ReactDOM.render(
   <Provider store={store}>

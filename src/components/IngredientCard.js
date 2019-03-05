@@ -8,7 +8,7 @@ class IngredientCard extends Component {
 
   render() {
     // console.log(this.props)
-    // console.log(this.state)
+    // console.log(state)
     return (
       <div>
         {
@@ -32,7 +32,6 @@ const mapStateToProps = (state) => {
 
 const mapActionsToProps = {
   saveIngredient: saveIngredient
-
 } // end of mapActionsToProps
 
 

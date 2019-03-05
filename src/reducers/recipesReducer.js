@@ -1,12 +1,11 @@
-import { GET_RECIPES } from '../actions/recipesActions'
-// import { combineReducers } from 'redux'
-// import { routerReducer } from 'react-router-redux'
-// import { reducer as formReducer } from 'redux-form'
+import { GET_RECIPES, CREATE_RECIPE } from '../actions/recipesActions'
 
 export default function recipesReducer(state = [], {type, payload}) {
   switch (type) {
     case GET_RECIPES:
       return payload
+    case CREATE_RECIPE:
+      console.log(payload)
     default:
       return state
   }
