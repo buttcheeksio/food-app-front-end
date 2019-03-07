@@ -1,41 +1,31 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
-// import { BrowserRouter as Router, Route, Link, NavLink, withRouter, Switch } from "react-router-dom"
 import { withRouter, Route } from "react-router-dom"
 
 import { ingredientAPIRequest } from './actions/ingredientsActions'
 import { recipeAPIRequest } from './actions/recipesActions'
 import { userIngAPIRequest } from './actions/userActions'
+import { recipeIngAPIRequest } from './actions/ingredientsActions'
 
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
 import MyRecipesPage from './components/MyRecipesPage'
 import MyIngredientsPage from './components/MyIngredientsPage'
+import RecipePage from './components/RecipePage'
 
 const ingURL = `http://localhost:3000/api/v1/ingredients`
 const userIngURL = `http://localhost:3000/api/v1/user_ingredients/1` // this is HARD CODED to 1
-
+const recipeIngURL = `http://localhost:3000/api/v1/recipe_ingredients`
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  //   this.state = {
-  //     all: []
-  //   }
-  //
-  //   // this.onUpdateUser = this.onUpdateUser.bind(this)
-  // } // end of constructor
 
   componentDidMount() {
     this.props.ingredientAPIRequest(ingURL, 'GET_INGREDIENTS')
     this.props.userIngAPIRequest(userIngURL)
     this.props.recipeAPIRequest()
+    this.props.recipeIngAPIRequest(recipeIngURL, 'GET_RECIPE_INGREDIENTS')
     // this.setState({all: this.props.ingredients.all})
   } // end of componentDidMount()
 
@@ -44,21 +34,17 @@ class App extends Component {
   }
 
   render() {
-    // this.setState({all: this})
-    // console.log(this)
     return (
-
-          <div className="App">
-            <Navbar />
-              <Route exact path='/' component={Home} />
-              <Route path='/my-recipes' component={MyRecipesPage} />
-              <Route path='/my-ingredients' component={MyIngredientsPage} />
-              <Route path='/about' component={About} />
-          </div>
-
+      <div className="App">
+        <Navbar />
+          <Route exact path='/' component={Home} />
+          <Route path='/new-recipe' component={MyRecipesPage} />
+          <Route path='/my-ingredients' component={MyIngredientsPage} />
+          <Route path='/about' component={About} />
+          <Route path='/recipe/:id' component={RecipePage} />
+      </div>
     );
   } // end of render()
-
 } // end of class App
 
 const mapStateToProps = (state, props) => {
@@ -72,7 +58,8 @@ const mapStateToProps = (state, props) => {
 const mapActionsToProps = {
   ingredientAPIRequest: ingredientAPIRequest,
   recipeAPIRequest: recipeAPIRequest,
-  userIngAPIRequest: userIngAPIRequest
+  userIngAPIRequest: userIngAPIRequest,
+  recipeIngAPIRequest: recipeIngAPIRequest
 } // end of mapActionsToProps
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(App))

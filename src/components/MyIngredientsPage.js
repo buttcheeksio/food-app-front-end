@@ -1,46 +1,31 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
-import { Row } from 'react-materialize'
+import { Row, Col } from 'react-materialize'
 
 import IngredientsContainer from './IngredientsContainer'
 import SavedIngredientsContainer from './SavedIngredientsContainer'
 import UserIngredientsContainer from './UserIngredientsContainer'
 
-class MyIngredientsPage extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     all: []
-  //   }
-  // } // end of constructor()
-
-  // componentDidMount() {
-  //   this.setState({all: ["lol"]})
-  // }
-
-
+class MyIngredientsPage extends PureComponent {
 
   render() {
-    // console.log(this.props)
-    // console.log(this.state)
     return (
-      <div className="container">
-        <h4 className="center">My Ingredients</h4>
-        <Row>
-          <div className="col s3">
+      <Row className="container">
+
+          <Col s={4}>
             <IngredientsContainer />
-          </div>
+          </Col>
 
-          <div className="col s3">
+          <Col s={4}>
             <SavedIngredientsContainer />
-          </div>
+          </Col>
 
-          <div className="col s3">
+          <Col s={4}>
             <UserIngredientsContainer />
-          </div>
-        </Row>
-      </div>
+          </Col>
+
+      </Row>
     )
   } // end of MyIngredientsPage()
 } // end of MyIngredientsPage

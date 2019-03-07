@@ -1,26 +1,22 @@
-import React, { Component } from 'react'
-import { Card } from 'react-materialize'
-// import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
+import { Card, Chip } from 'react-materialize'
 import { connect } from 'react-redux'
 import { saveIngredient } from '../actions/ingredientsActions'
 
-class IngredientCard extends Component {
+class IngredientCard extends PureComponent {
 
   render() {
-    // console.log(this.props)
-    // console.log(state)
     return (
       <div>
         {
-          <Card className="teal lighten-4 black-text" onClick={() => this.props.changeClicked()}>
+          <Chip className="col s5" onClick={() => this.props.changeClicked()}>
             <span>{this.props.data.name}</span>
-          </Card>
+          </Chip>
         }
 
       </div>
     )
   } // end of render()
-
 } // end of IngredientCard
 
 const mapStateToProps = (state) => {

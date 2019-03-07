@@ -8,9 +8,9 @@ const Navbar = (props) => {
     <nav className="nav-wrapper red darken-3">
       <div className="container">
         <a className="brand-logo" onClick={() => props.history.push('/')}>The Food Bible</a>
-        
+
         <ul className="right">
-          <li><a onClick={() => props.history.push('/my-recipes')}>My Recipes</a></li>
+          <li><a onClick={() => props.history.push('/new-recipe')}>New Recipe</a></li>
           <li><a onClick={() => props.history.push('/my-ingredients')}>My Ingredients</a></li>
           <li><a onClick={() => props.history.push('/about')}>About</a></li>
         </ul>

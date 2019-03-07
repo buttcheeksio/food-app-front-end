@@ -1,18 +1,20 @@
-import {  CHANGE_CLICKED,
+import {
+          CHANGE_CLICKED,
           GET_INGREDIENTS,
           SAVE_INGREDIENT,
           GET_USER_INGREDIENTS,
-          CLEAR_INGREDIENTS
+          CLEAR_INGREDIENTS,
+          GET_RECIPE_INGREDIENTS
         } from '../actions/ingredientsActions'
 
-export default function ingredientsReducer(state = { all: [], saved: [], userIngredients: [] }, { type, payload }) {
+export default function ingredientsReducer(state = { all: [], saved: [], userIngredients: [], recipeIngredients: [] }, { type, payload }) {
   switch (type) {
     case CHANGE_CLICKED:
     return {
       ...state,
       all: state.all.map(ingredient => {
         if (ingredient.id === payload) {
-          return {...ingredient, clicked: !ingredient.clicked}
+          return { ...ingredient, clicked: !ingredient.clicked }
         } else {
           return ingredient
         }
@@ -38,18 +40,17 @@ export default function ingredientsReducer(state = { all: [], saved: [], userIng
         ...state,
         all: state.all.map(ingredient => {
           if (ingredient.clicked) {
-            return {...ingredient, clicked: false}
+            return { ...ingredient, clicked: false }
           } else {
             return ingredient
           }
         })
       }
-    // case USERS_INGREDIENTS:
-    //   return {
-    //     ...state,
-    //
-    //   }
-
+    case GET_RECIPE_INGREDIENTS:
+      return {
+        ...state,
+        recipeIngredients: [...state.recipeIngredients, payload]
+      }
     default:
       return state
   }

@@ -1,15 +1,23 @@
-import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import IngredientInRecipe from './IngredientInRecipe'
 
-// import { Card, CardTitle } from 'react-materialize'
 
-class RecipeCardInfo extends Component {
+class RecipeCardInfo extends PureComponent {
+
+  handleRenderIngredients = () => {
+    return this.props.data.recipe_ingredients.map( ing => {
+      return <IngredientInRecipe data={ing} />
+    })
+  } // end of handleRenderIngredients()
+
   render() {
-    // console.log(this.props.data)
     return (
       <div>
-        {this.props.data.description}
+        <h2>{this.props.data.name}</h2>
+        <p>{this.props.data.description}</p>
+        <p>{this.props.data.directions}</p>
+        <ul>{this.handleRenderIngredients()}</ul>
       </div>
     )
   } // end of render()

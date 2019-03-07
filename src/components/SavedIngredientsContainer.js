@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import IngredientCard from './IngredientCard'
 import { clearIngredients, changeClicked  } from '../actions/ingredientsActions'
 // import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import { Button, Row } from 'react-materialize'
 
 const userIngURL = `http://localhost:3000/api/v1/user_ingredients/`
 
-class SavedIngredientsContainer extends Component {
+class SavedIngredientsContainer extends PureComponent {
 
 
   renderIngredients = () => {
@@ -41,13 +41,13 @@ class SavedIngredientsContainer extends Component {
     // console.log("in SavedIngredientsContainer: ", this.props.ingredients)
     return (
       <div>
-        <Row>
+
           <Button onClick={() => this.createUserIngredients()}>Save</Button>
-          <div className="col s3">
-            <h5>Saved Ingredients</h5>
+          <br/>
+          <div>
             { this.renderIngredients() }
           </div>
-        </Row>
+
       </div>
     )
   } // end of render()

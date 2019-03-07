@@ -31,3 +31,35 @@
     transform: rotate(360deg);
   }
 }
+
+.first-ing-container {
+  width: 30%
+}
+
+.second-ing-container {
+  width: 30%
+}
+
+.third-ing-container {
+  width: 30%
+}
+
+/* .recipe-form > * {
+  display: flex;
+}
+
+.recipe-details {
+  width: 50%;
+}
+
+.ingredients-container {
+  width: 50%;
+}
+
+.ingredient-search {
+  height: 70%;
+}
+
+.selected-ingredients {
+  height: 30%;
+} */

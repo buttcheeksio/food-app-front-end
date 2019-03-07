@@ -7,6 +7,7 @@ export const CHANGE_CLICKED = "CHANGE_CLICKED"
 export const SAVE_USER_INGREDIENTS = "SAVE_USER_INGREDIENTS"
 export const CLEAR_INGREDIENTS = "CLEAR_INGREDIENTS"
 export const USERS_INGREDIENTS = "USERS_INGREDIENTS"
+export const GET_RECIPE_INGREDIENTS = 'GET_RECIPE_INGREDIENTS'
 
 
 export function ingredientAPIRequest(url, type) {
@@ -21,6 +22,14 @@ export function ingredientAPIRequest(url, type) {
       })
       // .then(() => console.log(this.user))
   }
+} // end of ingredientAPIRequest()
+
+export function recipeIngAPIRequest(url, type) {
+  return dispatch => {
+    fetch(url)
+      .then( res => res.json() )
+      .then( data => dispatch(getRecipeIngs(type, data)) )
+  } // end of return dispatch
 } // end of ingredientAPIRequest()
 
 export function changeClicked(ingId) {
@@ -49,6 +58,13 @@ export function getIngredients(type, data) {
     payload: data
   }
 } // end of getIngredients(data)
+
+export function getRecipeIngs(type, data) {
+  return {
+    type: type,
+    payload: data
+  }
+} // end of getRecipeIngs(type, data)
 
 export function saveIngredient(ingredient) {
   // console.log("in saveIngredient: ", ingredient)

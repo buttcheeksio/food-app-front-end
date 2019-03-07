@@ -1,14 +1,30 @@
-import React, { Component } from 'react'
-import { Input } from 'react-materialize'
+import React, { PureComponent } from 'react'
+import { Chip } from 'react-materialize'
 
-const IngToAdd = (props) => {
+class IngToAdd extends PureComponent {
+  state = {
+    hideItem: false
+  }
 
-  // const options = props.data.map(ing => (
-  //   <li key={ing.id}>
-  //     {ing.name}
-  //   </li>
-  // ))
-  return <p onClick={props.click} className="col s3">{props.data.name}</p>
+
+  handleClick = (event) => {
+    this.setState({ hideItem: !this.state.hideItem })
+    this.props.click(event)
+  }
+
+  render() {
+    // console.log("IngToAdd")
+    return (
+      <p
+        onClick={(event) => this.handleClick(event)}
+        hidden={this.state.hideItem}
+        className="col s2"
+        id={this.props.data.id}
+      >
+      {this.props.data.name}
+    </p>
+    )
+  }
 }
 
 export default IngToAdd

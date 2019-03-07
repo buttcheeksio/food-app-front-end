@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import IngredientCard from './IngredientCard'
 // import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 // import { Button } from 'react-materialize'
 
 // const userIngredientsURL = `http://localhost:3000/api/v1/user_ingredients`
-class UserIngredientsContainer extends Component {
+class UserIngredientsContainer extends PureComponent {
 
   renderIngredients = () => {
     if (this.props.user.ingUserHas) {

@@ -1,11 +1,12 @@
 import React from 'react'
+import RecipesContainer from './RecipesContainer'
 
 const Home = () => {
   return (
-    <div className="container">
-      <p>Some text about The Food Bible</p>
+    <div className="home-page">
+      <RecipesContainer />
     </div>
   )
-}
+} // end of Home
 
 export default Home
