@@ -12,7 +12,7 @@ const Navbar = (props) => {
         <ul className="right">
           <li><a onClick={() => props.history.push('/new-recipe')}>New Recipe</a></li>
           <li><a onClick={() => props.history.push('/my-ingredients')}>My Ingredients</a></li>
-          <li><a onClick={() => props.history.push('/about')}>About</a></li>
+
         </ul>
       </div>
     </nav>

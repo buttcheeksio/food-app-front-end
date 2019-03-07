@@ -5,6 +5,7 @@ import { Button, Input, Row, Collection } from 'react-materialize'
 import IngFormSearchBar from './IngFormSearchBar'
 import IngToAdd from './IngToAdd'
 import AddedIng from './AddedIng'
+import { withRouter } from 'react-router-dom'
 
 class RecipeForm extends PureComponent {
   constructor() {
@@ -20,7 +21,8 @@ class RecipeForm extends PureComponent {
         vegetarian: false,
         vegan: false,
         glutenFree: false,
-        dairyFree: false
+        dairyFree: false,
+        image: ""
       }
     } // end of this.state
   } // end of constructor()
@@ -43,7 +45,8 @@ handleCreateRecipe = (event) => {
         vegan: this.state.newRecipe.vegan,
         gluten_free: this.state.newRecipe.glutenFree,
         dairy_free: this.state.newRecipe.dairyFree,
-        user_id: this.props.user.id
+        user_id: this.props.user.id,
+        image: this.state.newRecipe.image
       },
       selected_ings: {
         ings: this.state.selectedIngs
@@ -51,9 +54,13 @@ handleCreateRecipe = (event) => {
     })
   }) // end of fetch
   .then(res => res.json())
+  .then( data => {
+    this.props.createRecipe(data)
+    this.props.history.push(`/recipe/${data.id}`)})
 } // end of handleCreateRecipe()
 
 handleChange = (event) => {
+
   let newRecipe = {...this.state.newRecipe}
   newRecipe[event.target.name] = event.target.value
   this.setState({newRecipe})
@@ -126,7 +133,10 @@ handleRenderIngList = () => {
       <div className="recipe-form">
       <form onSubmit={this.handleCreateRecipe}>
         <div className="recipe-details">
-          <Input s={6} name="name" label="Recipe Name" type="text" onChange={this.handleChange} value={this.state.newRecipe.name} />
+          <Row>
+            <Input s={4} name="name" label="Recipe Name" type="text" onChange={this.handleChange} value={this.state.newRecipe.name} />
+            <Input s={4} name="image" label="Image URL" type="text" onChange={this.handleChange} value={this.state.newRecipe.image} />
+          </Row>
           <Input name="description" label="Description" type="textarea" onChange={this.handleChange} value={this.state.newRecipe.description} />
           <Input name="directions" label="Directions" type="textarea" onChange={this.handleChange} value={this.state.newRecipe.directions} />
 
@@ -174,4 +184,4 @@ const mapActionsToProps = {
   createRecipe: createRecipe
 } // end of mapActionsToProps
 
-export default connect(mapStateToProps, mapActionsToProps)(RecipeForm)
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(RecipeForm))

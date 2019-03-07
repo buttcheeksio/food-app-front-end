@@ -5,7 +5,7 @@ export default function recipesReducer(state = [], {type, payload}) {
     case GET_RECIPES:
       return payload
     case CREATE_RECIPE:
-      console.log(payload)
+      return [...state, payload]
     default:
       return state
   }
