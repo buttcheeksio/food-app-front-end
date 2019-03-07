@@ -29,6 +29,7 @@ export function userIngAPIRequest(url) {
     .then( res => res.json() )
     .then( data => {
       dispatch(getUsersIngredients(removeDuplicates(data, 'id')))
+      // dispatch(getUsersIngredients(data))
     })
     // .then(console.log(this))
   }
