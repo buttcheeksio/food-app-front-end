@@ -7,11 +7,14 @@ import IngToAdd from './IngToAdd'
 import AddedIng from './AddedIng'
 import { withRouter } from 'react-router-dom'
 
+// let filteredResults = []
 class RecipeForm extends PureComponent {
+
   constructor() {
     super()
     this.state = {
       query: '',
+      filteredResults: [],
       selectedIngs: [],
       clicked: [],
       newRecipe: {
@@ -60,7 +63,6 @@ handleCreateRecipe = (event) => {
 } // end of handleCreateRecipe()
 
 handleChange = (event) => {
-
   let newRecipe = {...this.state.newRecipe}
   newRecipe[event.target.name] = event.target.value
   this.setState({newRecipe})
@@ -72,15 +74,18 @@ handleClick = (event) => {
   this.setState({newRecipe})
 } // end of handleClick()
 
-handleSubmit = (event) => {
-  event.preventDefault()
-  console.log(this.state)
-} // end of handleSubmit()
-
 handleChangeQuery = (event) => {
   this.setState({
     query: event.target.value
   })
+
+  if (event.target.value.length > 0) {
+    this.setState({filteredResults: this.props.ingredients.all.filter(ingredient => {
+      return ingredient.name.toLowerCase().indexOf(this.state.query) !== -1})
+    })
+  } else {
+    this.setState({filteredResults: []})
+  }
 } // end of handleChange()
 
 handleAddIng = (event) => {
@@ -118,16 +123,16 @@ handleRenderSelectedIng = () => {
 } // end of handleRenderSelectedIng()
 
 handleRenderIngList = () => {
-  let filteredResults = this.props.ingredients.all.filter(ingredient => {
-    return ingredient.name.toLowerCase().indexOf(this.state.query) !== -1
-  })
   return (
-    filteredResults.map( ing => {
+    this.state.filteredResults.map( ing => {
       return <IngToAdd key={ing.id} click={this.handleAddIng} data={ing} />
-  }))
+    })
+  )
 } // end of handleRenderIngList()
 
   render() {
+
+    console.log("RecipeForm.js")
 
     return (
       <div className="recipe-form">

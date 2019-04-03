@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 
 class RecipeCard extends PureComponent {
 
-
-  handleMarkRecipes = () => {
+  handleShowMissingIngs = () => {
     let array = []
     this.props.data.recipe_ingredients.map( ingA => {
       this.props.user.ingUserHas.map( ing => {
@@ -25,30 +24,33 @@ class RecipeCard extends PureComponent {
       return <h5>You are missing one ingredient</h5>
     } else if (difference === -2) {
       return <h5>You are missing two ingredients</h5>
+    } else if (difference === -3) {
+      return <h5>You are missing three ingredients</h5>
+    } else {
+      return <h5>You are missing multiple ingredients</h5>
     }
-  } // end of handleMarkRecipes()
+  } // end of handleShowMissingIngs()
 
   render() {
+    console.log(this.props)
     return (
-      <Row>
-        <Col m={8} s={12}>
-          <Card
-            header={
-              <CardTitle
-                image={this.props.data.image}
-                waves='light'
-              />
-            }
+      <div class="recipe-card">
+        <Card
+          header={
+            <CardTitle
+              image={this.props.data.image}
+              waves='light'
+            />
+          }
+          key={this.props.data.name}
+          title={this.props.data.name}
+          actions={[<Link to={`/recipe/${this.props.data.id}`}>Click to see this recipe!</Link>]}
 
-            title={this.props.data.name}
-            actions={[<Link to={`/recipe/${this.props.data.id}`}>Click to see this recipe!</Link>]}
-
-          >
-            {this.handleMarkRecipes()}
-            {this.props.data.description}
-          </Card>
-        </Col>
-      </Row>
+        >
+          {this.handleShowMissingIngs()}
+          {this.props.data.description}
+        </Card>
+      </div>
     )
   } // end of render()
 } // end of RecipeCard

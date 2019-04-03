@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-
 import { Row, Col } from 'react-materialize'
-
 import IngredientsContainer from './IngredientsContainer'
 import IngFormSearchBar from './IngFormSearchBar'
 import SavedIngredientsContainer from './SavedIngredientsContainer'
@@ -36,4 +34,3 @@ const mapStateToProps = (state) => {
 } // end of mapStateToProps
 
 export default connect(mapStateToProps)(MyIngredientsPage)
-// export default connect(mapStateToProps, mapActionsToProps)(IngredientCard);

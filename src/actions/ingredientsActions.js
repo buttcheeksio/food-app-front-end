@@ -8,6 +8,8 @@ export const SAVE_USER_INGREDIENTS = "SAVE_USER_INGREDIENTS"
 export const CLEAR_INGREDIENTS = "CLEAR_INGREDIENTS"
 export const USERS_INGREDIENTS = "USERS_INGREDIENTS"
 export const GET_RECIPE_INGREDIENTS = 'GET_RECIPE_INGREDIENTS'
+export const ADD_ING_TO_USER_ING = 'ADD_ING_TO_USER_ING'
+export const DELETE_USER_ING = 'DELETE_USER_ING'
 
 
 export function ingredientAPIRequest(url, type) {
@@ -67,7 +69,6 @@ export function getRecipeIngs(type, data) {
 } // end of getRecipeIngs(type, data)
 
 export function saveIngredient(ingredient) {
-  // console.log("in saveIngredient: ", ingredient)
   return dispatch => dispatch({
     type: SAVE_INGREDIENT,
     payload: ingredient
@@ -78,5 +79,19 @@ export function usersIngredients(ingredients) {
   return {
     type: USERS_INGREDIENTS,
     payload: ingredients
+  }
+} // end of usersIngredients(ingredients)
+
+export function addIngToUserIng(userId, ingredient) {
+  return {
+    type: ADD_ING_TO_USER_ING,
+    payload: { userId: userId, ingredient: ingredient }
+  }
+}
+
+export function deleteUserIng(userId, ingredient) {
+  return {
+    type: DELETE_USER_ING,
+    payload: { userId: userId, ingredient: ingredient }
   }
 }

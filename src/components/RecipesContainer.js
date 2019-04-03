@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import RecipeCard from './RecipeCard'
 import { connect } from 'react-redux'
-import { Row } from 'react-materialize'
+import { Row, Col } from 'react-materialize'
 import IngFormSearchBar from './IngFormSearchBar'
 
 
@@ -31,7 +31,7 @@ class RecipesContainer extends PureComponent {
   } // end of renderRecipes()
 
   handleRenderRecipes = () => {
-    let filteredResults = this.props.recipes.filter(recipe => {
+    let filteredResults = this.props.recipes.filter( recipe => {
       return recipe.name.toLowerCase().indexOf(this.state.query) !== -1
     })
     return (
@@ -41,13 +41,19 @@ class RecipesContainer extends PureComponent {
   } // end of handleRenderIngList()
 
   render() {
+    console.log(this.props.recipes)
     return (
-      <div>
-        <IngFormSearchBar handleChangeQuery={this.handleChangeQuery} />
-        <Row>
-          { this.handleRenderRecipes() }
-        </Row>
-      </div>
+
+        <div class="container">
+          <IngFormSearchBar handleChangeQuery={this.handleChangeQuery} />
+          <div id="recipe">
+
+            { this.handleRenderRecipes() }
+
+          </div>
+
+        </div>
+
     )
   } // end of render()
 } // end of RecipesContainer

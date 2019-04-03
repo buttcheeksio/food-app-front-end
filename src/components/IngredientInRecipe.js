@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 class IngredientInRecipe extends PureComponent {
 
   render() {
-    console.log(this.props.data)
     return (
       <div>
         {this.props.data.name}

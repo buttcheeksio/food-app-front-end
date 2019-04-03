@@ -12,12 +12,14 @@ class RecipeCardInfo extends PureComponent {
   } // end of handleRenderIngredients()
 
   render() {
+    // console.log(this.props.data.recipe_ingredients)
     return (
       <div>
         <h2>{this.props.data.name}</h2>
         <img src={this.props.data.image} />
         <p>{this.props.data.description}</p>
         <p>{this.props.data.directions}</p>
+        <h5>Ingredients</h5>
         <ul>{this.handleRenderIngredients()}</ul>
       </div>
     )

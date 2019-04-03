@@ -12,8 +12,10 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
 import MyRecipesPage from './components/MyRecipesPage'
-import MyIngredientsPage from './components/MyIngredientsPage'
+import MyPantry from './components/MyPantry'
+import IngredientCollection from './components/IngredientCollection'
 import RecipePage from './components/RecipePage'
+import IngredientPage from './components/IngredientPage'
 
 const ingURL = `http://localhost:3000/api/v1/ingredients`
 const userIngURL = `http://localhost:3000/api/v1/user_ingredients/1` // this is HARD CODED to 1
@@ -29,19 +31,17 @@ class App extends Component {
     // this.setState({all: this.props.ingredients.all})
   } // end of componentDidMount()
 
-  componentDidUpdate() {
-    this.props.userIngAPIRequest(userIngURL)
-  }
-
   render() {
     return (
       <div className="App">
         <Navbar />
           <Route exact path='/' component={Home} />
           <Route path='/new-recipe' component={MyRecipesPage} />
-          <Route path='/my-ingredients' component={MyIngredientsPage} />
+          <Route path='/ingredients' component={IngredientCollection} />
           <Route path='/about' component={About} />
           <Route path='/recipe/:id' component={RecipePage} />
+          <Route path='/ingredients/:id' component={IngredientPage} />
+          <Route path='/my_pantry' component={MyPantry} />
       </div>
     );
   } // end of render()
@@ -63,3 +63,5 @@ const mapActionsToProps = {
 } // end of mapActionsToProps
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(App))
+
+// <Route path='/my-ingredients' component={MyIngredientsPage} />

@@ -44,6 +44,33 @@
   width: 30%
 }
 
+#recipe {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.recipe-card {
+  display: flex;
+  flex-flow: column;
+  width: 45%;
+  max-height: 1200px;
+  margin-right: 55px;
+}
+
+#ingredient {
+  display: flex;
+  /* width: 100%; */
+  flex-flow: wrap;
+  margin-top: 10px;
+}
+
+.ingredient-card {
+  display: flex;
+  flex-flow: column;
+  /* width: 12%; */
+  /* max-height: 1200px; */
+  /* margin-right: 55px; */
+}
 /* .recipe-form > * {
   display: flex;
 }

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import IngredientCard from './IngredientCard'
 import { clearIngredients, changeClicked  } from '../actions/ingredientsActions'
-// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Row } from 'react-materialize'
 
@@ -11,7 +10,6 @@ class SavedIngredientsContainer extends PureComponent {
 
 
   renderIngredients = () => {
-    // console.log("in SavedIngredientsContainer ", this.props.ingredients.saved)
       return this.props.ingredients.all.map( ingredient => {
         if (ingredient.clicked === true){
         return  <IngredientCard key={ingredient.id} data={ingredient} changeClicked={() => this.props.changeClicked(ingredient.id)} />
@@ -38,16 +36,13 @@ class SavedIngredientsContainer extends PureComponent {
   } // end of createUserIngredients()
 
   render() {
-    // console.log("in SavedIngredientsContainer: ", this.props.ingredients)
     return (
       <div>
-
-          <Button onClick={() => this.createUserIngredients()}>Save</Button>
-          <br/>
-          <div>
-            { this.renderIngredients() }
-          </div>
-
+        <Button onClick={() => this.createUserIngredients()}>Save</Button>
+        <br/>
+        <div>
+          { this.renderIngredients() }
+        </div>
       </div>
     )
   } // end of render()

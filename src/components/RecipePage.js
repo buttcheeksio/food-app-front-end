@@ -10,33 +10,17 @@ class RecipePage extends PureComponent {
     recipe: null
   }
 
-  thing = () => {
-
-  }
-  // componentDidMount() {
-  //   let recipe = this.props.recipes.find( rec => {
-  //     return rec.id == this.props.match.params.id
-  //   })
-  //
-  //   this.setState({
-  //     recipe: recipe
-  //   })
-  // }
-
   render() {
+    // console.log(this.props.recipes)
     let recipe = this.props.recipes.find( rec => {
       return rec.id == this.props.match.params.id
     })
 
-    // console.log(this.props)
     this.setState({ recipe })
-    // console.log(this.state)
 
     return (
-      <div>
-
-      {this.state.recipe ? <RecipeCardInfo data={this.state.recipe} /> : "loading..."}
-
+      <div class="container">
+        {this.state.recipe ? <RecipeCardInfo data={this.state.recipe} /> : "loading..."}
       </div>
     )
   } // end of render()
