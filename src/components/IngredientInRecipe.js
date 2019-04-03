@@ -7,9 +7,7 @@ class IngredientInRecipe extends PureComponent {
   render() {
     return (
       <div>
-        {this.props.data.name}
-        {this.props.data.amount}
-        {this.props.data.measurement}
+        {this.props.data.name}, {this.props.measurement.amount} {this.props.measurement.unit}
       </div>
     )
   } // end of render()

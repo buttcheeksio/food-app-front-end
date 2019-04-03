@@ -7,7 +7,7 @@ import IngToAdd from './IngToAdd'
 import AddedIng from './AddedIng'
 import { withRouter } from 'react-router-dom'
 
-// let filteredResults = []
+
 class RecipeForm extends PureComponent {
 
   constructor() {
@@ -100,6 +100,7 @@ handleAddIng = (event) => {
       }
     ]
   })
+  console.log(this.state.selectedIngs)
 } // end of handleAddIng()
 
 handleAmount = (input, data) => {
@@ -131,9 +132,6 @@ handleRenderIngList = () => {
 } // end of handleRenderIngList()
 
   render() {
-
-    console.log("RecipeForm.js")
-
     return (
       <div className="recipe-form">
       <form onSubmit={this.handleCreateRecipe}>

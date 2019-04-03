@@ -32,6 +32,7 @@ class App extends Component {
   } // end of componentDidMount()
 
   render() {
+    console.log("app ", this.props)
     return (
       <div className="App">
         <Navbar />

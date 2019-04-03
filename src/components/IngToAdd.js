@@ -19,6 +19,7 @@ class IngToAdd extends PureComponent {
         hidden={this.state.hideItem}
         className="col s2"
         key={this.props.data.id}
+        id={this.props.data.id}
       >
       {this.props.data.name}
     </p>

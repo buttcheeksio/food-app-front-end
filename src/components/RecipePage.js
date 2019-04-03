@@ -11,7 +11,7 @@ class RecipePage extends PureComponent {
   }
 
   render() {
-    // console.log(this.props.recipes)
+    console.log("RecipePage ", this.state)
     let recipe = this.props.recipes.find( rec => {
       return rec.id == this.props.match.params.id
     })
