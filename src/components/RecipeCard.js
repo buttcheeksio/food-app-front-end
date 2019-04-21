@@ -1,11 +1,17 @@
+/*
+RecipeCard
+Is shown when a user clicks into a recipe to view its information from Home (via RecipesContainer)
+*/
+
 import React, { PureComponent } from 'react'
 import RecipeCardInfo from './RecipeCardInfo'
 import { connect } from 'react-redux'
-import { Card, CardTitle, Row, Col } from 'react-materialize'
+import { Card, CardTitle } from 'react-materialize'
 import { Link } from 'react-router-dom'
 
 class RecipeCard extends PureComponent {
 
+/* Shows the number of ingredients in the recipe that the user is missing from their pantry */
   handleShowMissingIngs = () => {
     let array = []
     this.props.data.recipe_ingredients.map( ingA => {
@@ -32,7 +38,6 @@ class RecipeCard extends PureComponent {
   } // end of handleShowMissingIngs()
 
   render() {
-    console.log(this.props)
     return (
       <div class="recipe-card">
         <Card
@@ -45,7 +50,6 @@ class RecipeCard extends PureComponent {
           key={this.props.data.name}
           title={this.props.data.name}
           actions={[<Link to={`/recipe/${this.props.data.id}`}>Click to see this recipe!</Link>]}
-
         >
           {this.handleShowMissingIngs()}
           {this.props.data.description}
@@ -58,6 +62,5 @@ class RecipeCard extends PureComponent {
 const mapStateToProps = (state) => {
   return state
 } // end of mapStateToProps
-
 
 export default connect(mapStateToProps)(RecipeCard);

@@ -27,11 +27,9 @@ class App extends Component {
     this.props.userIngAPIRequest(userIngURL)
     this.props.recipeAPIRequest()
     this.props.recipeIngAPIRequest(recipeIngURL, 'GET_RECIPE_INGREDIENTS')
-    // this.setState({all: this.props.ingredients.all})
   } // end of componentDidMount()
 
   render() {
-    console.log("app ", this.props)
     return (
       <div className="App">
         <Navbar />
@@ -62,5 +60,3 @@ const mapActionsToProps = {
 } // end of mapActionsToProps
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(App))
-
-// <Route path='/my-ingredients' component={MyIngredientsPage} />

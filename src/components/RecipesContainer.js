@@ -1,6 +1,6 @@
 /*
 RecipesContainer
-Renders the IngFormSearchBar and RecipeCards (via renderRecipes())
+Renders the IngFormSearchBar and RecipeCards (via handleRenderRecipes())
 */
 
 import React, { PureComponent } from 'react'
@@ -23,16 +23,6 @@ class RecipesContainer extends PureComponent {
       query: event.target.value
     })
   } // end of handleChangeQuery()
-
-  renderRecipes = () => {
-    if (this.props.recipes) {
-      return this.props.recipes.map( recipe => {
-        return (
-          <RecipeCard key={recipe.id} data={recipe} />
-        )
-      })
-    }
-  } // end of renderRecipes()
 
   handleRenderRecipes = () => {
     let filteredResults = this.props.recipes.filter( recipe => {

@@ -1,3 +1,11 @@
+/*
+IngFormSearchBar
+Allows users to search
+
+Is used in the following files:
+  ../components/RecipesContainer.js
+*/
+
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { Input } from 'react-materialize'
@@ -18,6 +26,5 @@ class IngFormSearchBar extends PureComponent {
   } // end of render()
 
 } // end of ingFormSearchBar
-
 
 export default connect(null)(IngFormSearchBar)
