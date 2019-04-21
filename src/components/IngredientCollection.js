@@ -1,10 +1,14 @@
+/*
+IngredientCollection
+Shows all of the ingredients in the pantry,
+which can be searched through via the IngFormSearchBar.
+*/
+
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import IngFormSearchBar from './IngFormSearchBar'
 import Ingredient from './Ingredient'
-import { Row } from 'react-materialize'
 import { withRouter } from 'react-router-dom'
-
 
 class IngredientCollection extends PureComponent {
 

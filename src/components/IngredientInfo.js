@@ -1,6 +1,13 @@
+/*
+IngredientInfo
+Shows the information of the currently selected ingredient when the
+ingredient is clicked in the IngredientCollection.
+
+Utilized in /components/Ingredient
+*/
+
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-
 
 class IngredientInfo extends PureComponent {
 

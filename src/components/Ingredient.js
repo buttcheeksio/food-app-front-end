@@ -1,5 +1,15 @@
+/*
+Ingredient
+Individual ingredient "chips" that can be clicked to show a
+modal that contains more information about that ingredient.
+Ingredients that are currently in the user's pantry show as green,
+while other ingredients show as grey.
+
+Utilized in /components/IngredientCollection
+*/
+
 import React, { PureComponent } from 'react'
-import { Chip, Modal, Button, Row, Col } from 'react-materialize'
+import { Chip, Modal, Button } from 'react-materialize'
 import IngredientInfo from './IngredientInfo'
 import { connect } from 'react-redux'
 import { addIngToUserIng, deleteUserIng } from '../actions/ingredientsActions'
