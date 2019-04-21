@@ -9,7 +9,7 @@ class IngFormSearchBar extends PureComponent {
       <div>
         <Input
           ref={search => this.search = search}
-          label="Search Ingredients..."
+          label="Search Database..."
           type="search"
           onChange={this.props.handleChangeQuery}
         />

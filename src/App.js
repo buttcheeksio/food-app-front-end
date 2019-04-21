@@ -10,7 +10,6 @@ import { recipeIngAPIRequest } from './actions/ingredientsActions'
 
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-import About from './components/About'
 import MyRecipesPage from './components/MyRecipesPage'
 import MyPantry from './components/MyPantry'
 import IngredientCollection from './components/IngredientCollection'
@@ -39,7 +38,6 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/new-recipe' component={MyRecipesPage} />
           <Route path='/ingredients' component={IngredientCollection} />
-          <Route path='/about' component={About} />
           <Route path='/recipe/:id' component={RecipePage} />
           <Route path='/ingredients/:id' component={IngredientPage} />
           <Route path='/my_pantry' component={MyPantry} />

@@ -1,3 +1,8 @@
+/*
+Home Page
+Shows list of recipes that users can search through
+  */
+
 import React from 'react'
 import RecipesContainer from './RecipesContainer'
 
