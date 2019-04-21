@@ -7,7 +7,6 @@ import IngToAdd from './IngToAdd'
 import AddedIng from './AddedIng'
 import { withRouter } from 'react-router-dom'
 
-
 class RecipeForm extends PureComponent {
 
   constructor() {

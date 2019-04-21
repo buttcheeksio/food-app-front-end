@@ -1,6 +1,12 @@
+/*
+IngredientInRecipe
+One of the selected recipe's ingredients.
+
+Utilized in /components/RecipeCardInfo
+*/
+
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-
 
 class IngredientInRecipe extends PureComponent {
 
@@ -16,6 +22,5 @@ class IngredientInRecipe extends PureComponent {
 const mapStateToProps = (state) => {
   return state
 } // end of mapStateToProps
-
 
 export default connect(mapStateToProps)(IngredientInRecipe);

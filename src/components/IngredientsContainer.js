@@ -4,7 +4,6 @@ import { changeClicked  } from '../actions/ingredientsActions'
 import { connect } from 'react-redux'
 import { Row } from 'react-materialize'
 
-
 class IngredientsContainer extends PureComponent {
 
   renderIngredients = () => {
@@ -29,6 +28,5 @@ const mapStateToProps = (state) => {
 const mapActionsToProps = {
   changeClicked: changeClicked
 } // end of mapActionsToProps
-
 
 export default connect(mapStateToProps, mapActionsToProps)(IngredientsContainer);
