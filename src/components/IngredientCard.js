@@ -30,6 +30,4 @@ const mapActionsToProps = {
   saveIngredient: saveIngredient
 } // end of mapActionsToProps
 
-
-// onClick={() => this.props.saveIngredient(this.props.data)}
 export default connect(mapStateToProps, mapActionsToProps)(IngredientCard);

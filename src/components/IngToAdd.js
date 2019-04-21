@@ -9,10 +9,9 @@ class IngToAdd extends PureComponent {
   handleClick = (event) => {
     this.setState({ hideItem: !this.state.hideItem })
     this.props.click(event)
-  }
+  } // end of handleClick(event)
 
   render() {
-    // console.log("IngToAdd")
     return (
       <p
         onClick={(event) => this.handleClick(event)}

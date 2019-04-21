@@ -76,7 +76,6 @@ class Ingredient extends PureComponent {
           key={this.props.data.id}
           header={this.props.data.name}
           trigger={this.handleIfOwnedByUser()}
-          actions=<Button>Close</Button>
         >
           <IngredientInfo data={this.props.data} owned={this.state.owned} />
           {
